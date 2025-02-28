@@ -11,13 +11,5 @@ foreach ($port in $ports) {
                             -LocalPort $port `
                             -Action Allow `
                             -Profile Any
-
-        # Create outbound rule
-        New-NetFirewallRule -DisplayName "FiveM - $protocol Outbound Port $port" `
-                            -Direction Outbound `
-                            -Protocol $protocol `
-                            -LocalPort $port `
-                            -Action Allow `
-                            -Profile Any
     }
 }
