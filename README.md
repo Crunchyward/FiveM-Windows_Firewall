@@ -1,2 +1,4 @@
-# FiveM-Windows_Firewall
-This is a powershell Script that inserts the Needed ports for a FiveM Server that you would need to get a standard server up and running.
+# Helpful-FiveM-Scripts
+-These scripts will open your ports for the Game and TXADMIN
+- And will install the common tools you might need. 
+- For now this uses MariaDB as your database that will change soon iish
