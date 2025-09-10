@@ -1,11 +1,27 @@
 # PowerShell script with progress bar for system setup, application checks, and Windows Update install/reboot
+# Now gives user a choice between MariaDB and XAMPP
 
 $apps = @(
     @{ Name = "Google Chrome"; WingetId = "Google.Chrome"; CheckName = "chrome.exe"; Manual = $false },
     @{ Name = "HeidiSQL"; WingetId = "HeidiSQL.HeidiSQL"; CheckName = "heidisql.exe"; Manual = $false },
-    @{ Name = "MariaDB"; WingetId = "MariaDB.MariaDB"; CheckName = "mysqld.exe"; Manual = $false },
     @{ Name = "Visual Studio Code"; WingetId = "Microsoft.VisualStudioCode"; CheckName = "Code.exe"; Manual = $false }
 )
+
+# Prompt user for MariaDB or XAMPP
+Write-Host "Choose which database software to install:"
+Write-Host "1. MariaDB"
+Write-Host "2. XAMPP"
+do {
+    $dbChoice = Read-Host "Enter 1 for MariaDB or 2 for XAMPP"
+} while ($dbChoice -notin @("1", "2"))
+
+if ($dbChoice -eq "1") {
+    $apps += @{ Name = "MariaDB"; WingetId = "MariaDB.MariaDB"; CheckName = "mysqld.exe"; Manual = $false }
+    $dbName = "MariaDB"
+} else {
+    $apps += @{ Name = "XAMPP"; WingetId = "ApacheFriends.Xampp"; CheckName = "xampp-control.exe"; Manual = $false }
+    $dbName = "XAMPP"
+}
 
 $steps = @(
     "Checking for Windows updates (scan only)...",
@@ -181,3 +197,9 @@ Show-Progress -Activity "All steps completed!"
 Write-Progress -Activity "System Setup Progress" -Completed
 
 Write-Host "`nAll steps completed. Please review any warnings above."
+
+
+
+
+
+
