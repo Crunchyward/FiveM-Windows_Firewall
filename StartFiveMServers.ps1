@@ -18,8 +18,8 @@ for ($i = 1; $i -le $serverCount; $i++) {
     $workingDir   = Read-Host "Enter the working directory for Server $i (e.g. C:\FXServer$i or your fivem folder):"
     $cfgPath      = Read-Host "Enter the full path to server.cfg for Server $i (e.g. C:\FXServer$i\server.cfg):"
 
-    $defaultPort  = 40120 + $i - 1 # Server port starts at 40120
-    $defaultTxAdminPort = 30120 + $i - 1 # txAdmin port starts at 30120
+    $defaultPort  = 30120 + $i - 1 # Server port starts at 30120
+    $defaultTxAdminPort = 40120 + $i - 1 # txAdmin port starts at 40120
 
     $txAdminPort  = Read-Host "Enter the txAdmin port for Server $i (default suggestion: $defaultTxAdminPort):"
     if (-not ($txAdminPort -as [int])) {
